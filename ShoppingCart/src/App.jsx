@@ -1,11 +1,23 @@
-import Cart from "./cart";
-import Shop from "./shop";
-import HomePage from "./homePage";
+import Cart from "./pages/cart";
+import Shop from "./pages/shop";
+import HomePage from "./pages/homePage";
+import { BrowserRouter as  Router, Link, Routes, Route } from "react-router-dom";
 
 export default function App(){
-  
-  return(
-    <h1>Start</h1>
 
+  return(
+    <Router>
+      <nav>
+        <Link to="/">Home Page</Link>
+        <Link to="Shop">Shop</Link>
+        <Link to="Cart">Cart</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element ={<HomePage/>} ></Route>
+        <Route path="Shop" element ={<Shop/>} ></Route>
+        <Route path="Cart" element ={<Cart/>} ></Route>
+      </Routes>
+    </Router>
   )
 }

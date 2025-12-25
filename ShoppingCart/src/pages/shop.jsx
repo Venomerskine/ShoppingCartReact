@@ -26,8 +26,18 @@ export default function Shop(){
 
     return (
         <div>
-        <h2>Welcome to the Shop</h2>
-        <h3>{shopData[4].title}</h3>
+        <h1>Welcome to the Shop</h1>
+        <div className="product-grid">
+        {shopData.map((product) => (
+            <div className="card" key={product.id}>
+                <img src={product.image} alt={product.title}></img>
+                <h3>{product.title}</h3>
+                <p>$ {product.price}</p>
+                <p>{product.category}</p>
+            </div>
+        ))}
+        </div>
+
         </div>
     )
 }

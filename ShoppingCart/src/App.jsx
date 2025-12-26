@@ -3,10 +3,12 @@ import Shop from "./pages/shop";
 import HomePage from "./pages/homePage";
 import { BrowserRouter as  Router, Link, Routes, Route } from "react-router-dom";
 import './index.css'
+import { CartProvider } from "./context/CartContext";
 
 export default function App(){
 
   return(
+    <CartProvider>
     <Router>
       <nav>
         <Link to="/">Home Page</Link>
@@ -23,5 +25,6 @@ export default function App(){
       </main>
 
     </Router>
+    </CartProvider>
   )
 }

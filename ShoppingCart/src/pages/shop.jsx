@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ProductCard from "./productCard";
 
 export default function Shop(){
 
@@ -29,12 +30,7 @@ export default function Shop(){
         <h1>Welcome to the Shop</h1>
         <div className="product-grid">
         {shopData.map((product) => (
-            <div className="card" key={product.id}>
-                <img src={product.image} alt={product.title}></img>
-                <h3>{product.title}</h3>
-                <p>$ {product.price}</p>
-                <p>{product.category}</p>
-            </div>
+            <ProductCard key={product.id} product = {product}/>
         ))}
         </div>
 

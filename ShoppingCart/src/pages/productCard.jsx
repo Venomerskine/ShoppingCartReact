@@ -18,7 +18,7 @@ const ProductCard = ({product}) => {
         <div className="card" key={product.id}>
             <img src={product.image} alt={product.title}></img>
             <h3>{product.title}</h3>
-            <p>$ {product.price}</p>
+            <p>$ {(product.price).toFixed(2)}</p>
             <p>{product.category}</p>
             <form>
             <input type="number" placeholder="How many" min={0} id={product.title} onChange={handleQuantity}></input>

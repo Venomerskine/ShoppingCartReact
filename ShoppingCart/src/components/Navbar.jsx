@@ -10,7 +10,7 @@ const {itemCount, totalPrice} = useCart()
       <nav>
         <Link to="/">Home Page</Link>
         <Link to="Shop">Shop</Link>
-        <Link to="Cart">Cart: {}( total: {itemCount} price: $ {totalPrice})</Link>
+        <Link to="Cart">Cart: {}( total: {itemCount} price: $ {(totalPrice).toFixed(2)})</Link>
       </nav>
 
     )

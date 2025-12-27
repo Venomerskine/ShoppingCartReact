@@ -19,7 +19,7 @@ export default function Cart(){
             ) : (
                 <>
                 <div className="price">
-                <h2>Total: $ {calcCartTotal(cartItems)}</h2>
+                <h2>Total: $ {(calcCartTotal(cartItems)).toFixed(2)}</h2>
                 </div>
                 <div className="cart">
                 {cartItems.map(item => (

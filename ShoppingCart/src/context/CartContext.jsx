@@ -59,7 +59,6 @@ export const CartProvider = ({children}) => {
     const itemCount =  cartItems.reduce((accumulator, currentItem) => {
         return accumulator + currentItem.quantity}, 0)
 
-    // const [cartItems, setCartItems] = useState(cartItems)
 
     const increase = (itemId) =>{
         setCartItems(
@@ -74,7 +73,7 @@ export const CartProvider = ({children}) => {
     const decrease = (itemId) => {
         setCartItems(cartItem =>
             cartItem.map(item => 
-                item.id === item.id
+                itemId === item.id
                 ? {...item, quantity: item.quantity -1}
                 :item
             ) .filter(item => item.quantity > 0)
@@ -88,7 +87,7 @@ export const CartProvider = ({children}) => {
 
     return (
         <CartContext.Provider value={{
-            cartItems,shopData ,addToCart, totalPrice, itemCount, increase, decrease, remove, shopData, error, loading
+            cartItems,addToCart, totalPrice, itemCount, increase, decrease, remove, shopData, error, loading
             }}>
             {children}
         </CartContext.Provider>

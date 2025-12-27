@@ -1,4 +1,5 @@
 import { useCart } from "../context/CartContext"
+import { calcCartTotal } from "../context/CartContext"
 
 
 
@@ -14,9 +15,13 @@ export default function Cart(){
             {cartItems.length === 0 ? (
                 <p>Your cart is empty</p>
             ) : (
-                <div>
+                <>
+                <div className="price">
+                <h2>Total: $ {calcCartTotal(cartItems)}</h2>
+                </div>
+                <div className="cart">
                 {cartItems.map(item => (
-                    <div className="card">
+                    <div className="cart-card" key={item.id}>
                         <img src={item.image} alt={item.title}></img>
                         <h3>{item.title}</h3>
                         <p>$ {item.price}</p>
@@ -24,7 +29,10 @@ export default function Cart(){
                         <p>Total: $ {(item.price)*(item.quantity)}</p>
                     </div>
                 ))}
+                
                 </div>
+                
+                </>
             )}
         </div>
     )

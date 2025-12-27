@@ -27,10 +27,29 @@ export const CartProvider = ({children}) => {
 
     };
 
+    const totalPrice = cartItems.reduce((total, item) => {
+        const itemPrice = parseFloat(item.price) || 0
+        const itemQuantity = parseInt(item.quantity) || 0
+        return total + (itemPrice * itemQuantity)
+
+    }, 0)
+
+    const itemCount =  cartItems.reduce((accumulator, currentItem) => {
+        return accumulator + currentItem.quantity}, 0)
+
     return (
-        <CartContext.Provider value={{cartItems, addToCart}}>
+        <CartContext.Provider value={{cartItems, addToCart, totalPrice, itemCount}}>
             {children}
         </CartContext.Provider>
     )
 
+}
+
+export const calcCartTotal = (cartItems) => {
+    return cartItems.reduce((total, item) => {
+        const itemPrice = parseFloat(item.price) || 0
+        const itemQuantity = parseInt(item.quantity) || 0
+        return total + (itemPrice * itemQuantity)
+
+    }, 0)
 }

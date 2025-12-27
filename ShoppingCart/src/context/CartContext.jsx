@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
 
@@ -7,6 +7,28 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({children}) => {
+
+    const [shopData, setShopData] = useState([])
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() =>
+        
+         {
+        fetch('https://fakestoreapi.com/products/')
+        .then((data) => {
+            if (data.status >= 400){
+                throw new Error("Server Error")
+            }
+            return data.json()
+        })
+        .then(data => setShopData(data))
+        .catch((error) => setError(error))
+        .finally(() => setLoading(false))
+
+    }, [])
+
+
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (product, amount) => {
@@ -66,7 +88,7 @@ export const CartProvider = ({children}) => {
 
     return (
         <CartContext.Provider value={{
-            cartItems, addToCart, totalPrice, itemCount, increase, decrease, remove
+            cartItems, addToCart, totalPrice, itemCount, increase, decrease, remove, shopData, error, loading
             }}>
             {children}
         </CartContext.Provider>
